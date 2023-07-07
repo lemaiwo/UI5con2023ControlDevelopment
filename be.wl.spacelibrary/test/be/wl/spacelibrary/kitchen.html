@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Kitchen sink - be.wl.spacelibrary</title>
+    <script src="shared-config.js"></script>
+    <script src="../../../../../resources/sap-ui-core.js" id="sap-ui-bootstrap" data-sap-ui-libs="be.wl.spacelibrary">
+    </script>
+
+    <script>
+        sap.ui.getCore().attachInit(function() {
+            sap.ui.require([
+                "be/wl/spacelibrary/SpaceComponent",
+                "be/wl/spacelibrary/SpaceItemComponent"
+            ], function(
+                SpaceComponent, SpaceItemComponent
+            ) {
+
+                var oSpaceComponent = new SpaceComponent({
+                    intro: "Hello UI5con !",
+                    logo: "./img/star-wars-intro.png",
+                    items: [new SpaceItemComponent({
+                        title: "EPISODES IV-VI",
+                        description: "After years of galactic silence, civilization is on the brink of a new Star Wars release. Now, with the Force preparing to awaken, the people of Earth seek solace in films of old. With nowhere to turn, they gather in great numbers and watch the original trilogy without rest. Three films. 6 hours. 24 minutes. Popcorn. Slushies. Total elation."
+                    }), new SpaceItemComponent({
+                        title: "Episode V: The Empire Strikes Back Opener",
+                        description: "It is a dark time for the Rebellion. Although the Death Star has been destroyed, Imperial troops have driven the Rebel forces from their hidden base and pursued them across the galaxy.Evading the dreaded Imperial Starfleet, a group of freedom fighters led by Luke Skywalker has established a new secret base on the remote ice world of Hoth.The evil lord Darth Vader, obsessed with finding young Skywalker, has dispatched thousands of remote probes into the far reaches of space"
+                    })]
+                });
+                oSpaceComponent.placeAt("testSpaceComponent");
+
+
+                var oSpaceItemComponent = new SpaceItemComponent({
+
+                });
+                oSpaceItemComponent.placeAt("testSpaceItemComponent");
+            });
+        });
+    </script>
+</head>
+
+<body id="body" class="sapUiBody">
+
+    <h1>0. SpaceComponent</h1>
+    <div id="methodsSpaceComponent"></div>
+    <div id="testSpaceComponent"></div>
+    <br><br>
+
+
+    <h1>1. SpaceItemComponent</h1>
+    <div id="methodsSpaceItemComponent"></div>
+    <div id="testSpaceItemComponent"></div>
+    <br><br>
+</body>
+
+</html>

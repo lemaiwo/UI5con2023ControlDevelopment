@@ -1,0 +1,25 @@
+specVersion: '3.0'
+metadata:
+  name: be.wl.spaceapp
+type: application
+resources:
+  configuration:
+    propertiesFileSourceEncoding: UTF-8
+builder:
+  resources:
+    excludes:
+      - "/test/**"
+      - "/localService/**"
+  customTasks:
+  - name: ui5-tooling-transpile-task
+    afterTask: replaceVersion
+    configuration: &transpileConfig
+      transpileTypeScript: true
+      transformAsyncToPromise: true
+      removeConsoleStatements: true
+  - name: ui5-task-zipper
+    afterTask: generateCachebusterInfo
+    configuration:
+      archiveName: spaceapp
+      additionalFiles:
+      - xs-app.json

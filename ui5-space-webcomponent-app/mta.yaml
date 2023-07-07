@@ -1,0 +1,85 @@
+_schema-version: "3.2"
+ID: spaceapp
+description: creation
+version: 0.0.1
+modules:
+- name: space-dest-content
+  type: com.sap.application.content
+  requires:
+  - name: space-dest-srv
+    parameters:
+      content-target: true
+  - name: spaceapp-repo-host
+    parameters:
+      service-key:
+        name: spaceapp-repo-host-key
+  - name: spaceapp-xsuaa-srv
+    parameters:
+      service-key:
+        name: spaceapp-xsuaa-srv-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: spaceapp_repo_host
+          ServiceInstanceName: spaceapp-html5-srv
+          ServiceKeyName: spaceapp-repo-host-key
+          sap.cloud.service: space
+        - Authentication: OAuth2UserTokenExchange
+          Name: spaceapp_uaa
+          ServiceInstanceName: spaceapp-xsuaa-srv
+          ServiceKeyName: spaceapp-uaa-key
+          sap.cloud.service: space
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: spaceapp-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: spaceapp-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - spaceapp.zip
+      name: spaceapp
+      target-path: resources/
+- name: spaceapp
+  type: html5
+  path: .
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: space-dest-srv
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      version: 1.0.0
+    service: destination
+    service-name: space-dest-srv
+    service-plan: lite
+- name: spaceapp-xsuaa-srv
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: spaceapp-xsuaa-srv
+    service-plan: application
+- name: spaceapp-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: spaceapp-html5-srv
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true

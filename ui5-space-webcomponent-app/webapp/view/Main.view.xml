@@ -1,0 +1,24 @@
+<mvc:View
+	controllerName="be.wl.spaceapp.controller.Main"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:wl="be.wl.spacelibrary"
+	xmlns:mvc="sap.ui.core.mvc">
+
+	<f:DynamicPage id="dynamicPageId">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Space intro demo app"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:content>
+			<wl:SpaceComponent intro="Death Star destroyed!" logo="./img/star-wars-intro.png">
+				<wl:SpaceItemComponent title="EPISODES IV-VI" description="After years of galactic silence, civilization is on the brink of a new Star Wars release. Now, with the Force preparing to awaken, the people of Earth seek solace in films of old. With nowhere to turn, they gather in great numbers and watch the original trilogy without rest. Three films. 6 hours. 24 minutes. Popcorn. Slushies. Total elation."/>
+				<wl:SpaceItemComponent title="Episode V: The Empire Strikes Back Opener" description="It is a dark time for the Rebellion. Although the Death Star has been destroyed, Imperial troops have driven the Rebel forces from their hidden base and pursued them across the galaxy.Evading the dreaded Imperial Starfleet, a group of freedom fighters led by Luke Skywalker has established a new secret base on the remote ice world of Hoth.The evil lord Darth Vader, obsessed with finding young Skywalker, has dispatched thousands of remote probes into the far reaches of space"/>
+			</wl:SpaceComponent>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

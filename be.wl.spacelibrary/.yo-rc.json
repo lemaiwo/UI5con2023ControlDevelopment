@@ -1,0 +1,17 @@
+{
+  "generator-ui5-library-webc": {
+    "namespace": "be.wl.spacelibrary",
+    "framework": "OpenUI5",
+    "frameworkVersion": "1.115.1",
+    "webComponentsPackage": "./spacepackage",
+    "author": "lemaiwo",
+    "initrepo": true,
+    "webComponentsPackageName": "spacepackage",
+    "webComponentsPackageVersion": "../spacepackage",
+    "libId": "be.wl.spacelibrary",
+    "libURI": "be/wl/spacelibrary",
+    "libBasePath": "../../..",
+    "cdnDomain": "sdk.openui5.org",
+    "setupCompleted": true
+  }
+}
